@@ -1,18 +1,15 @@
-var express = require("express");
-var http = require("http");
-var app = express();
+const Discord = require("discord.js")
+const client = new Discord.Client()
 
-// Ping the app
-app.use(express.static("public"));
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
-    response.sendStatus(200);
-});
+client.on("ready" , () => {
+  console.log("I am online")
+})
 
-// Request listener
-var listener = app.listen(process.env.PORT || 3000, function () {
-    console.log("Your app is listening on port " + listener.address().port);
-});
-setInterval(() => {
-    http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
+client.on("message" , message => {
+    if(message.content === "!ping"){
+      return message.channel.send("pong")
+  }
+  if(message.content === "!beep")
+    return message.channel.send("boop")
+  }
+          )
